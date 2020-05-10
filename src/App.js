@@ -20,7 +20,6 @@ export default function App() {
         <Route path="/cart">
           <Cart />
         </Route>
-
         <Route path="/about">
           <About />
         </Route>
@@ -30,13 +29,13 @@ export default function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/products">
-          <Products />
-        </Route>
         <Route path="/products/:id">
           <ProductDetails />
         </Route>
-        <Route exact path="*">
+        <Route path="/products">
+          <Products />
+        </Route>
+        <Route path="*">
           <Error />
         </Route>
       </Switch>

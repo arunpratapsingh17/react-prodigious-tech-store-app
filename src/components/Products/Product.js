@@ -6,7 +6,7 @@ export default function Product({ image, title, id, price }) {
     <article>
       <div className="img-container">
         <img src={url} alt="Product li photu" />
-        <Link to={`/products/${id}`} className="btn btn-primary product-link">
+        <Link to={`products/${id}`} className="btn btn-primary product-link">
           Details
         </Link>
       </div>
