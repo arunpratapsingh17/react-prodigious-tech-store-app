@@ -14,7 +14,37 @@ export default function ProductDetails() {
   }
   if (product) {
     console.log(product);
-    return <h1>hello from product details page</h1>;
+    const {
+      image: { url },
+      title,
+      price,
+      description,
+    } = product;
+    console.log(title);
+
+    return (
+      <section className="single-product">
+        <img
+          src={url}
+          alt="image of single product"
+          className="single-product-image"
+        />
+        <article>
+          <h1>{title}</h1>
+          <h2>${price}</h2>
+          <p>{description}</p>
+          <button
+            className="btn btn-primary btn-block"
+            onClick={() => {
+              //Add to cart
+              history.push("/cart");
+            }}
+          >
+            add to cart
+          </button>
+        </article>
+      </section>
+    );
   } else {
     return <h1>Chutiya mat bana bc</h1>;
   }
