@@ -8,8 +8,34 @@ export default function CartProvider({ children }) {
   const [cartItem, setCartItem] = React.useState(0);
   console.log("Henlo from czrt context");
   console.log(cart, total);
+  const increseAmount = (e) => {
+    console.log("Increased item from context");
+  };
+  const removeitem = (e) => {
+    console.log("Increased item from context");
+  };
+  const decreaseAmount = (e) => {
+    console.log("Increased item from context");
+  };
+  const addToCart = (e) => {
+    console.log("Increased item from context");
+  };
+  const clearCart = (e) => {
+    console.log("Increased item from context");
+  };
   return (
-    <cartContext.Provider value={{ cart, total, cartItem }}>
+    <cartContext.Provider
+      value={{
+        cart,
+        total,
+        cartItem,
+        removeitem,
+        increseAmount,
+        decreaseAmount,
+        addToCart,
+        clearCart,
+      }}
+    >
       {children}
     </cartContext.Provider>
   );
