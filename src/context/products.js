@@ -15,9 +15,13 @@ export default function ProductProvider({ children }) {
     axios.get(`${url}/products`).then((response) => {
       const featured = featuredProducts(response.data);
       setProducts(response.data);
+      console.log("Safed jhuth");
+
+      console.log(products);
       setFeatured(featured);
       setLoading(false);
     });
+
     return () => {};
   }, []);
   return (

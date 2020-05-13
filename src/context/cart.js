@@ -47,10 +47,28 @@ export default function CartProvider({ children }) {
       setCart(newCart);
     }
   };
-  const addToCart = (e) => {
-    console.log("Increased item from context");
+  const addToCart = (product) => {
+    const {
+      image: { url },
+      id,
+      title,
+      price,
+    } = product;
+    let tempProduct = cart.find((item) => {
+      if (item.id === id) {
+        return item;
+        console.log("Vns");
+      }
+    });
+    if (tempProduct) {
+      increaseAmount(id);
+    } else {
+      const tempItem = { id, title, image: url, price, amount: 1 };
+      const tempCart = [...cart, tempItem];
+      setCart(tempCart);
+    }
   };
-  const clearCart = (e) => {
+  const clearCart = () => {
     setCart([]);
   };
   return (
