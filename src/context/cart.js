@@ -54,13 +54,11 @@ export default function CartProvider({ children }) {
       title,
       price,
     } = product;
-    let tempProduct = cart.find((item) => {
-      if (item.id === id) {
-        return item;
-        console.log("Vns");
-      }
-    });
-    if (tempProduct) {
+    const tempProduct1 = cart.find((item) => item.id === id);
+    console.log("Ac");
+    console.log(tempProduct1);
+
+    if (tempProduct1) {
       increaseAmount(id);
     } else {
       const tempItem = { id, title, image: url, price, amount: 1 };
