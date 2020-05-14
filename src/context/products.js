@@ -24,6 +24,9 @@ export default function ProductProvider({ children }) {
 
     return () => {};
   }, []);
+  console.log("Faisu");
+  console.log(products);
+
   return (
     <ProductContext.Provider value={{ loading, products, featured }}>
       {children}
