@@ -57,12 +57,7 @@ export default function CartProvider({ children }) {
     }
   };
   const addToCart = (product) => {
-    const {
-      image: { url },
-      id,
-      title,
-      price,
-    } = product;
+    const { image, id, title, price } = product;
     const tempProduct1 = cart.find((item) => item.id === id);
     console.log("Ac");
     console.log(tempProduct1);
@@ -70,7 +65,11 @@ export default function CartProvider({ children }) {
     if (tempProduct1) {
       increaseAmount(id);
     } else {
-      const tempItem = { id, title, image: url, price, amount: 1 };
+      const tempItem = { id, title, image, price, amount: 1 };
+      console.log("Wdfert");
+
+      console.log(tempItem);
+
       const tempCart = [...cart, tempItem];
       setCart(tempCart);
     }

@@ -16,18 +16,13 @@ export default function ProductDetails() {
   }
   if (product) {
     console.log(product);
-    const {
-      image: { url },
-      title,
-      price,
-      description,
-    } = product;
+    const { image, title, price, description } = product;
     console.log(title);
 
     return (
       <section className="single-product">
         <img
-          src={url}
+          src={image}
           alt="image of single product"
           className="single-product-image"
         />
