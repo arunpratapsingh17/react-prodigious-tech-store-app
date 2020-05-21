@@ -2,12 +2,17 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import loginUser from "../strapi/loginUser";
 import registerUser from "../strapi/registerUser";
+import UserContext from "../context/user";
 //strapi function
 
 //handle user
 
 export default function Login() {
   const history = useHistory();
+  //UserConext Setup
+  const value = React.useContext(UserContext);
+  console.log(value);
+
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [username, setUsername] = React.useState("default");
