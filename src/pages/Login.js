@@ -1,5 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import loginUser from "../strapi/loginUser";
+import registerUser from "../strapi/registerUser";
 //strapi function
 
 //handle user
@@ -11,9 +13,28 @@ export default function Login() {
   const [username, setUsername] = React.useState("default");
   const [isMember, setIsMember] = React.useState(true);
 
-  let isEmpty = false;
-  const toggleMember = () => {};
-  const handleSubmit = async (e) => {};
+  let isEmpty = !email || !password || !username;
+  const toggleMember = () => {
+    setIsMember((prevMember) => {
+      let isMember = !prevMember;
+      isMember ? setUsername("default") : setUsername("");
+      return isMember;
+    });
+  };
+  const handleSubmit = async (e) => {
+    //alert
+    e.preventDefault();
+    let response;
+    if (isMember) {
+      response = await loginUser({ username, password });
+    } else {
+      response = await registerUser({ email, password, username });
+    }
+    if (response) {
+      console.log("Success");
+      console.log(response);
+    }
+  };
   return (
     <section className="form section">
       <h2 className="section-title">{isMember ? "sign in" : "Register"}</h2>
@@ -66,7 +87,7 @@ export default function Login() {
         {/* Register link */}
         <p className="register-link">
           {isMember ? "Need To Register" : "Already a member"}
-          <button type="button" onClick={handleSubmit}>
+          <button type="button" onClick={toggleMember}>
             click here
           </button>
         </p>
