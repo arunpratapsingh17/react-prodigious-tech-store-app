@@ -21,7 +21,7 @@ export default function UserProvider({ children }) {
 
   const [alert, setAlert] = React.useState({
     show: false,
-    msg: "Hello World",
+    msg: "",
     type: "success",
   });
   console.log(alert);

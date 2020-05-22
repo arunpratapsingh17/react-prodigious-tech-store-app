@@ -10,13 +10,19 @@ import { UserContext } from "../context/user";
 export default function Login() {
   const history = useHistory();
   //UserConext Setup
-  const { user, userLogin, userLogout } = React.useContext(UserContext);
+  const {
+    user,
+    userLogin,
+    userLogout,
+    showAlert,
+    hideAlert,
+  } = React.useContext(UserContext);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [username, setUsername] = React.useState("default");
   const [isMember, setIsMember] = React.useState(true);
 
-  let isEmpty = !email || !password || !username;
+  let isEmpty = !email || !password || !username || alert.show;
   const toggleMember = () => {
     setIsMember((prevMember) => {
       let isMember = !prevMember;
@@ -26,6 +32,9 @@ export default function Login() {
   };
   const handleSubmit = async (e) => {
     //alert
+    showAlert({
+      msg: "Loading,Please Wait",
+    });
     e.preventDefault();
     let response;
     if (isMember) {
@@ -41,6 +50,14 @@ export default function Login() {
       } = response.data;
       const newUser = { token, username };
       userLogin(newUser);
+      showAlert({
+        msg: `You are logged in:${username}`,
+      });
+      history.push("/products");
+    } else {
+      showAlert({
+        msg: `Try again...`,
+      });
     }
   };
   return (
