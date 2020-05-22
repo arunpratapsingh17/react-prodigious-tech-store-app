@@ -4,14 +4,14 @@ import "./index.css";
 import App from "./App";
 import ProductProvider from "./context/products";
 import CartProvider from "./context/cart";
-import { UserProvider } from "./context/user";
+import UserProvider from "./context/user";
 ReactDOM.render(
-  <ProductProvider>
-    <CartProvider>
-      <UserProvider>
+  <UserProvider>
+    <ProductProvider>
+      <CartProvider>
         <App />
-      </UserProvider>
-    </CartProvider>
-  </ProductProvider>,
+      </CartProvider>
+    </ProductProvider>
+  </UserProvider>,
   document.getElementById("root")
 );

@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import loginUser from "../strapi/loginUser";
 import registerUser from "../strapi/registerUser";
-import UserContext from "../context/user";
+import { UserContext } from "../context/user";
 //strapi function
 
 //handle user
@@ -10,9 +10,7 @@ import UserContext from "../context/user";
 export default function Login() {
   const history = useHistory();
   //UserConext Setup
-  const value = React.useContext(UserContext);
-  console.log(value);
-
+  const { user, userLogin, userLogout } = React.useContext(UserContext);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [username, setUsername] = React.useState("default");
@@ -36,8 +34,13 @@ export default function Login() {
       response = await registerUser({ email, password, username });
     }
     if (response) {
-      console.log("Success");
       console.log(response);
+      const {
+        jwt: token,
+        user: { username },
+      } = response.data;
+      const newUser = { token, username };
+      userLogin(newUser);
     }
   };
   return (

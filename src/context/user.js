@@ -6,20 +6,39 @@ function getUserFromLocalStorage() {
     ? JSON.parse(localStorage.getItem("user"))
     : { username: null, token: null };
 }
-export function UserProvider({ children }) {
+export default function UserProvider({ children }) {
   const [user, setUser] = React.useState(getUserFromLocalStorage());
+
   const userLogin = (user) => {
     setUser(user);
     localStorage.setItem("user", JSON.stringify(user));
   };
+
   const userLogout = () => {
     setUser({ username: null, token: null });
     localStorage.removeItem("user");
   };
+
+  const [alert, setAlert] = React.useState({
+    show: false,
+    msg: "Hello World",
+    type: "success",
+  });
+  console.log(alert);
+
+  const showAlert = ({ msg, type = "success" }) => {
+    setAlert({ show: true, msg, type });
+  };
+
+  const hideAlert = () => {
+    setAlert({ ...alert, show: false });
+  };
   return (
-    <UserContext.Provider value={{ user, userLogin, userLogout }}>
+    <UserContext.Provider
+      value={{ user, userLogin, userLogout, alert, showAlert, hideAlert }}
+    >
       {children}
     </UserContext.Provider>
   );
 }
-export default UserContext;
+export { UserContext };

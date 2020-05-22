@@ -17,7 +17,6 @@ export default function ProductProvider({ children }) {
       const products = flattenProducts(response.data);
       setProducts(products);
       console.log("Safed jhuth");
-
       console.log(products);
       setFeatured(featured);
       setLoading(false);
