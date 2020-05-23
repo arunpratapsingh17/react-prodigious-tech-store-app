@@ -1,11 +1,14 @@
 import React from "react";
 import { cartContext } from "../context/cart";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/user";
 import CartItem from "../components/Cart/CartItem";
 import EmptyCart from "../components/Cart/EmptyCart";
 
 export default function Cart() {
-  let user = false;
+  const { user } = React.useContext(UserContext);
+  console.log("user from cart page");
+  console.log(user);
   const { total, cart } = React.useContext(cartContext);
   console.log("Henlo from Cart.js");
   console.log({ total, cart });
@@ -19,7 +22,7 @@ export default function Cart() {
         return <CartItem key={item.id} {...item} />;
       })}
       <h2>Total:${total}</h2>
-      {user ? (
+      {user.token ? (
         <Link to="/checkout" className="btn btn-primary btn-block">
           checkout
         </Link>

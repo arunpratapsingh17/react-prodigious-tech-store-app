@@ -8,7 +8,8 @@ function getUserFromLocalStorage() {
 }
 export default function UserProvider({ children }) {
   const [user, setUser] = React.useState(getUserFromLocalStorage());
-
+  console.log("To check gta 5");
+  console.log(user);
   const userLogin = (user) => {
     setUser(user);
     localStorage.setItem("user", JSON.stringify(user));
