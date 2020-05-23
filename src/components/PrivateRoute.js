@@ -7,7 +7,7 @@ export default function PrivateRoute({ children, ...rest }) {
     <Route
       {...rest}
       render={() => {
-        return user.token ? <children /> : <Redirect to="/login" />;
+        return user.token ? children : <Redirect to="/login" />;
       }}
     ></Route>
   );
