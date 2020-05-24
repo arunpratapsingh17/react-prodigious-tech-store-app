@@ -27,10 +27,29 @@ function Checkout(props) {
     console.log(response);
     const { token } = response;
     if (token) {
-      console.log(response);
+      setError("");
+      const { id } = token;
+      let order = await submitOrder({
+        name: name,
+        total: total,
+        items: cart,
+        stripeTokenId: id,
+        userToken: user.token,
+      });
     } else {
       hideAlert();
       setError(response.error.message);
+    }
+    if (order) {
+      showAlert({ msg: "Order Placed" });
+      clearCart();
+      history.push("/");
+      return;
+    } else {
+      showAlert({
+        msg: "There was an error with your order.Please try again",
+        type: "danger",
+      });
     }
   }
   if (cart.length < 1) {
