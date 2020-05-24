@@ -36,20 +36,20 @@ function Checkout(props) {
         stripeTokenId: id,
         userToken: user.token,
       });
+      if (order) {
+        showAlert({ msg: "Order Placed" });
+        clearCart();
+        history.push("/");
+        return;
+      } else {
+        showAlert({
+          msg: "There was an error with your order.Please try again",
+          type: "danger",
+        });
+      }
     } else {
       hideAlert();
       setError(response.error.message);
-    }
-    if (order) {
-      showAlert({ msg: "Order Placed" });
-      clearCart();
-      history.push("/");
-      return;
-    } else {
-      showAlert({
-        msg: "There was an error with your order.Please try again",
-        type: "danger",
-      });
     }
   }
   if (cart.length < 1) {
