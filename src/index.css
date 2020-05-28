@@ -97,6 +97,7 @@ Buttons
 .btn-primary {
   text-transform: uppercase;
   letter-spacing: var(--mainSpacing);
+  color: var(--primaryColor);
   border: 2px solid var(--primaryColor);
   padding: 0.45rem 0.8rem;
   display: inline-block;
@@ -316,14 +317,13 @@ Product List
 }
 .product-link {
   position: absolute;
-  color: var(--primaryColor);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: var(--mainTransition);
 }
-.product-link:hover {
+.product:hover .product-link {
   opacity: 1;
 }
 .product-footer {
