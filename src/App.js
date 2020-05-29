@@ -10,12 +10,14 @@ import Products from "./pages/Products";
 import Header from "./components/Header";
 import Alert from "./components/Alert";
 import PrivateRoute from "./components/PrivateRoute";
+import ScrollButton from "./components/ScrollButton";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 export default function App() {
   return (
     <Router>
       <Header />
       <Alert />
+      <ScrollButton />
       <Switch>
         <Route exact path="/">
           <Home />

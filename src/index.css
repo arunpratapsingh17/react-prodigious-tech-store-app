@@ -323,7 +323,7 @@ Product List
   opacity: 0;
   transition: var(--mainTransition);
 }
-.product:hover .product-link {
+.product-link:hover {
   opacity: 1;
 }
 .product-footer {

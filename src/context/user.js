@@ -8,6 +8,14 @@ function getUserFromLocalStorage() {
 }
 export default function UserProvider({ children }) {
   const [user, setUser] = React.useState(getUserFromLocalStorage());
+  const [height, setHeight] = React.useState(0);
+  React.useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setHeight(window.pageYOffset);
+    });
+    // Cleanup function follows
+    window.removeEventListener("scroll", () => {});
+  });
   console.log("To check gta 5");
   console.log(user);
   const userLogin = (user) => {
@@ -36,7 +44,15 @@ export default function UserProvider({ children }) {
   };
   return (
     <UserContext.Provider
-      value={{ user, userLogin, userLogout, alert, showAlert, hideAlert }}
+      value={{
+        user,
+        userLogin,
+        userLogout,
+        alert,
+        showAlert,
+        hideAlert,
+        height,
+      }}
     >
       {children}
     </UserContext.Provider>
