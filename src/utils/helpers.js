@@ -4,7 +4,7 @@ import url from "./URL";
 
 export function flattenProducts(data) {
   return data.map((item) => {
-    let image = `${item.image.formats.url}`;
+    let image = `${item.image.url}`;
     console.log("TO produce image");
     console.log(image);
 
