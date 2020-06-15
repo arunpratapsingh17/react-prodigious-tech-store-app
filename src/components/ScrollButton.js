@@ -4,7 +4,6 @@ import { UserContext } from "../context/user";
 
 export default () => {
   const { height } = React.useContext(UserContext);
-
   const scrollBackToTop = () => {
     window.scrollTo({
       top: 0,

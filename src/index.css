@@ -146,6 +146,8 @@ Header
 .logo {
   margin: 0 auto;
   width: 9rem;
+  animation-name: rotateLogo;
+  animation-duration: 1s;
 }
 .header ul {
   display: flex;
@@ -774,4 +776,46 @@ Filters Section
   margin-top: 8rem;
   font-size: 1.1rem;
   padding: 0 2rem;
+}
+.hero-title {
+  animation-name: moveInLeft;
+  animation-duration: 3s;
+}
+.hero-subtitle {
+  animation-name: moveInRight;
+  animation-duration: 3s;
+}
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80% {
+    transform: translateX(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0rem);
+  }
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0rem);
+  }
+}
+@keyframes rotateLogo {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
